@@ -87,10 +87,45 @@ class Conversion extends JFrame
 		ctField.setBounds(240, 110, 100, 20);
 		add(ctField);
 		
-		InnerConversion e = new InnerConversion();
+		//InnerConversion e = new InnerConversion();
 		JButton btn = new JButton("Convert");
 		btn.setBounds(130, 150, 100, 40);
-		btn.addActionListener(e);
+		btn.addActionListener(
+				evt->{
+					DecimalFormat df = new DecimalFormat();
+					
+					if(mileField.getText().length()!=0)
+					{
+						float mile = Float.parseFloat(mileField.getText());
+						kmField.setText(String.valueOf((mile*1.609344)));
+					}
+					
+					if(poundField.getText().length() !=0)
+					{
+						float pound = Float.parseFloat(poundField.getText());
+						float val = (float) (pound/2.2);
+						df.setMaximumFractionDigits(2);
+						kgField.setText(String.valueOf(df.format(val)));
+					}
+					
+					if(gallonField.getText().length()!=0)
+					{
+						float gallon = Float.parseFloat(gallonField.getText());
+						float val = (float)(gallon*3.785411784);
+						df.setMaximumFractionDigits(2);
+						literField.setText(String.valueOf(df.format(val)));
+						
+					}
+					
+					if(frField.getText().length()!=0)
+					{
+						float fr = Float.parseFloat(frField.getText());
+						float val = (float) ((fr-32)*0.5556);
+						df.setMaximumFractionDigits(2);
+						ctField.setText(String.valueOf(df.format(val)));
+					}
+					
+				});
 		add(btn);
 	}
 	
@@ -99,45 +134,5 @@ class Conversion extends JFrame
 		Conversion c = new Conversion();
 		c.setVisible(true);
 	}
-
 	
-	class InnerConversion implements ActionListener
-	{
-		DecimalFormat df = new DecimalFormat();
-		
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			// TODO Auto-generated method stub
-			if(mileField.getText().length()!=0)
-			{
-				float mile = Float.parseFloat(mileField.getText());
-				kmField.setText(String.valueOf((mile*1.609344)));
-			}
-			
-			if(poundField.getText().length() !=0)
-			{
-				float pound = Float.parseFloat(poundField.getText());
-				float val = (float) (pound/2.2);
-				df.setMaximumFractionDigits(2);
-				kgField.setText(String.valueOf(df.format(val)));
-			}
-			
-			if(gallonField.getText().length()!=0)
-			{
-				float gallon = Float.parseFloat(gallonField.getText());
-				float val = (float)(gallon*3.785411784);
-				df.setMaximumFractionDigits(2);
-				literField.setText(String.valueOf(df.format(val)));
-				
-			}
-			
-			if(frField.getText().length()!=0)
-			{
-				float fr = Float.parseFloat(frField.getText());
-				float val = (float) ((fr-32)*0.5556);
-				df.setMaximumFractionDigits(2);
-				ctField.setText(String.valueOf(df.format(val)));
-			}
-		}
-	}
 }
