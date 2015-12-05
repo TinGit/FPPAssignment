@@ -97,7 +97,8 @@ class Conversion extends JFrame
 					if(mileField.getText().length()!=0)
 					{
 						float mile = Float.parseFloat(mileField.getText());
-						kmField.setText(String.valueOf((mile*1.609344)));
+						df.setMaximumFractionDigits(2);
+						kmField.setText(String.valueOf(df.format(mile*1.609344)));
 					}
 					
 					if(poundField.getText().length() !=0)

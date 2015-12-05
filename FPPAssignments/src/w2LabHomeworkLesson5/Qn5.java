@@ -1,5 +1,6 @@
 package w2LabHomeworkLesson5;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class Qn5 {
@@ -31,13 +32,15 @@ class Circle extends Shape{
 	@Override
 	double computeArea() {
 		// TODO Auto-generated method stub
-		return Math.PI*radius*radius;
+		DecimalFormat df = new DecimalFormat();	
+		return Double.parseDouble(df.format(Math.PI*radius*radius));
 	}
 
 	@Override
 	double computePerimeter() {
 		// TODO Auto-generated method stub
-		return 2*Math.PI*radius;
+		DecimalFormat df = new DecimalFormat();	
+		return Double.parseDouble(df.format(2*Math.PI*radius));
 	}
 
 	@Override
@@ -67,13 +70,15 @@ class Rectangle extends Shape{
 	@Override
 	double computeArea() {
 		// TODO Auto-generated method stub
-		return width*height;
+		DecimalFormat df = new DecimalFormat();	
+		return Double.parseDouble(df.format(width*height));
 	}
 
 	@Override
 	double computePerimeter() {
 		// TODO Auto-generated method stub
-		return (2*width)+(2*height);
+		DecimalFormat df = new DecimalFormat();	
+		return Double.parseDouble(df.format((2*width)+(2*height)));
 	}
 
 	@Override
@@ -105,13 +110,16 @@ class RtTriangle extends Shape {
 	@Override
 	double computeArea() {
 		// TODO Auto-generated method stub
-		return (base*height)/2;
+		DecimalFormat df = new DecimalFormat();	
+		return Double.parseDouble(df.format((base*height)/2));
 	}
 
 	@Override
 	double computePerimeter() {
 		// TODO Auto-generated method stub
-		return base+height+Math.sqrt(Math.pow(base, 2)+Math.pow(height, 2));	
+		DecimalFormat df = new DecimalFormat();	
+		double perimeter = base+height+Math.sqrt(Math.pow(base, 2)+Math.pow(height, 2));
+		return Double.parseDouble(df.format(perimeter));	
 	}
 
 	@Override

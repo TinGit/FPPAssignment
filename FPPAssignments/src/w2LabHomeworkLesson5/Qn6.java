@@ -40,16 +40,24 @@ class Computer6 {
 
 	@Override
 	public boolean equals(Object obj) {
+		if(this==obj)
+			return true;
 		if(obj==null)
 			return false;
 		if(this.getClass()!=obj.getClass())
 			return false;
 		Computer6 c = (Computer6)obj;
-		if(c.manufacturer.equals(this.manufacturer) && c.processor.equals(this.processor) 
-				&& c.ramSize == this.ramSize && c.diskSize==this.diskSize && c.processorSpeed==this.processorSpeed)
-			return true;
-		else
+		if(!c.manufacturer.equals(this.manufacturer))
 			return false;
+		if(!c.processor.equals(this.processor))
+			return false;
+		if(c.ramSize != this.ramSize)
+			return false;
+		if(c.diskSize != this.diskSize)
+			return false;
+		if(Double.doubleToLongBits(c.processorSpeed) != Double.doubleToLongBits(this.processorSpeed))
+			return false;
+		return true;
 	}
 
 	@Override
@@ -103,19 +111,16 @@ class NoteBook6 extends Computer6 implements Cloneable{
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (!super.equals(obj))
+		if (obj==null)
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		NoteBook6 other = (NoteBook6) obj;
-		if (Double.doubleToLongBits(height) != Double
-				.doubleToLongBits(other.height))
+		NoteBook6 nb = (NoteBook6) obj;
+		if (Double.doubleToLongBits(height) != Double.doubleToLongBits(nb.height))
 			return false;
-		if (Double.doubleToLongBits(weight) != Double
-				.doubleToLongBits(other.weight))
+		if (Double.doubleToLongBits(weight) != Double.doubleToLongBits(nb.weight))
 			return false;
-		if (Double.doubleToLongBits(width) != Double
-				.doubleToLongBits(other.width))
+		if (Double.doubleToLongBits(width) != Double.doubleToLongBits(nb.width))
 			return false;
 		return true;
 	}
@@ -156,9 +161,9 @@ class Main6 {
 	    System.out.println("Obj3 hascode="+obj3.hashCode());
 	    System.out.println();
 	    
-	    
+	    System.out.println("Obj original value: "+obj);
 	    NoteBook6 objClone = (NoteBook6) obj.clone();
-	    System.out.println("After cloning:");
+	    System.out.print("ObjClone after cloning from Obj: ");
 	    System.out.println(objClone.toString());
 	}
 }
